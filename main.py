@@ -74,16 +74,16 @@ class Vacation:
 
     def sum(self):
         #sum the cost of the vacation package here
-        if not self.myclass.validThis(self.dist) or not self.passenger.validNumber() or not self.total_time.is_valid_total_time():
+        if not self.myclass.is_valid_destination(self.dist) or not self.passenger.is_valid_number() or not self.total_time.is_valid_total_time():
             return -1
         
         #sum the total cost
         number_total = self.base_cost
-        number_total += self.myclass.get_extraCost(self.dist)
-        number_total += self.total_time.getFee()
+        number_total += self.myclass.get_extra_cost(self.dist)
+        number_total += self.total_time.get_fee()
         number_total -= self.total_time.get_the_best_promo_ever()
 
-        discount = self.passenger.forHereDiscount()
+        discount = self.passenger.calculate_discount()
         number_total = number_total - (number_total * discount)
         
         return max(int(number_total), 0)
