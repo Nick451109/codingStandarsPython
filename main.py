@@ -1,4 +1,4 @@
-class myclass:
+class Destination:
     def __init__(self):
         self.destinations = {'Paris': 500, 'NYC': 600}
     
@@ -21,7 +21,6 @@ class passenger:
             return 0.1
         elif self.num <= 10:
             return 0.2
-        
         else:
             return 0.0
 
@@ -45,19 +44,19 @@ class Vacation:
     base_cost = 1000
 
     def __init__(self, dist, num, dur):
-        self.myclass = myclass()
+        self.destination = Destination()
         self.passenger = passenger(num)
         self.total_time = TotalTime(dur)
         self.dist = dist
 
     def sum(self):
         #sum the cost of the vacation package here
-        if not self.myclass.is_valid_destination(self.dist) or not self.passenger.is_valid_number() or not self.total_time.is_valid_total_time():
+        if not self.destination.is_valid_destination(self.dist) or not self.passenger.is_valid_number() or not self.total_time.is_valid_total_time():
             return -1
         
         #sum the total cost
         number_total = self.base_cost
-        number_total += self.myclass.get_extra_cost(self.dist)
+        number_total += self.destination.get_extra_cost(self.dist)
         number_total += self.total_time.get_fee()
         number_total -= self.total_time.get_the_best_promo_ever()
 
